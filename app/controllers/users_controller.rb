@@ -16,6 +16,7 @@ class UsersController < ApplicationController
             redirect '/users/#{@user.id}'
         else
             erb :'users/error'
+        end
     end
 
     get '/users/:id' do
@@ -30,6 +31,7 @@ class UsersController < ApplicationController
             erb :'users/login' ##VIEWS
         else
             redirect "/users/#{session[:user_id]}"
+        end
     end
 
     post '/login' do
@@ -49,4 +51,5 @@ class UsersController < ApplicationController
         session.destroy
         redirect '/login'
     end
+end
 
