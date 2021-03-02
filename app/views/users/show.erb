@@ -1,0 +1,10 @@
+<h1><%=@user.username%>'s Trips</h1>
+
+<%=flash[:message]%>
+
+<ul>
+  <% @trip.each do |trip| %>
+    <li><a href="/trips/<%=trip.id%>"><%=trip.name%></a></li>
+  <%end%>
+
+</ul>

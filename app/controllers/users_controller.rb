@@ -5,7 +5,7 @@ class UsersController < ApplicationController
             @user = current_user
             erb :'users/login' ##VIEWS
         end
-        erb :'users/signup'
+        erb :'users/create_user'
     end
 
 
