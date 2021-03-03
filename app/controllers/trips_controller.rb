@@ -3,7 +3,7 @@ class TripsController < ApplicationController
     get '/trips' do
         redirect_if_not_logged_in
         @trips = Trip.all
-        erb :'items/index'
+        erb :'trips/index'
     end
 
     get '/trips/new' do 
@@ -40,7 +40,26 @@ class TripsController < ApplicationController
         end
     end
 
-    
+    patch '/trips/:id' do
+     redirect_if_not_logged_in
+     set_trip
+     if check_owner(@trip)
+        @trip.update(params[:trip])
+     end
+     erb :'trips/show'
+    end
+
+    delete '/trips/:id' do
+        redirect_if_not_logged_in
+        set_trip
+        if check_owner(@trip)
+           @trip.delete
+           redirect '/trips'
+        else
+            erb :'trips/show'
+        end    
+    end
+end
 
     
 
