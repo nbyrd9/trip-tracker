@@ -51,5 +51,11 @@ class UsersController < ApplicationController
         session.destroy
         redirect '/login'
     end
+
+    get '/users' do
+        redirect_if_not_logged_in
+        @users = User.all
+        erb :'users/index'
+    end
 end
 
