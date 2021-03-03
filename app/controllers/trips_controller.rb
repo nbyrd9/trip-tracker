@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
 
     get '/trips' do
-        redirect_if_not_logged_in
+        authenticate
         @trips = Trip.all
         erb :'trips/index'
     end
@@ -16,7 +16,7 @@ class TripsController < ApplicationController
     end
 
     post '/trips' do
-        redirect_if_not_logged_in
+        authenticate
         trip = Trip.create(params[:trip])
         user = User.find_by(id: session[:user_id])
         user.trips << trip
@@ -41,7 +41,7 @@ class TripsController < ApplicationController
     end
 
     patch '/trips/:id' do
-     redirect_if_not_logged_in
+        authenticate
      set_trip
      if check_owner(@trip)
         @trip.update(params[:trip])
@@ -50,7 +50,7 @@ class TripsController < ApplicationController
     end
 
     delete '/trips/:id' do
-        redirect_if_not_logged_in
+        authenticate
         set_trip
         if check_owner(@trip)
            @trip.delete
@@ -61,14 +61,3 @@ class TripsController < ApplicationController
     end
 end
 
-    
-
-
-
-
-
-
-
-
-
-end

@@ -3,24 +3,25 @@ class UsersController < ApplicationController
     get '/signup' do
         if logged_in?
             @user = current_user
-            erb :'users/login' ##VIEWS
+            redirect "/users/#{session[:user_id]}"
+        else
+            erb :'users/signup'
         end
-        erb :'users/create_user'
     end
 
 
     post '/signup' do
-        @user = User.create(params[:user])
-        if @user.id 
-            session[:user_id] = @user.id
-            redirect '/users/#{@user.id}'
+        user = User.create(params[:user])
+        if user.id 
+            session[:user_id] = user.id
+            redirect '/users/#{user.id}'
         else
-            erb :'users/error'
+            erb :'users/create_user'
         end
     end
 
     get '/users/:id' do
-        redirect_if_not_logged_in
+        authenticate
             @user = User.find_by(id: params[:id])
             @trips = @user.trips
             erb :'users/show'
@@ -28,7 +29,7 @@ class UsersController < ApplicationController
 
     get '/login' do 
         if !logged_in?
-            erb :'users/login' ##VIEWS
+            erb :'users/login' 
         else
             redirect "/users/#{session[:user_id]}"
         end
@@ -43,17 +44,17 @@ class UsersController < ApplicationController
             redirect "/users/#{user.id}"
         else
             @errors = ["Invalid login. Please try again."]
-            erb :'users/login'
+            redirect "users/login"
         end
     end
 
     get '/logout' do 
         session.destroy
-        redirect '/login'
+        erb :'/login'
     end
 
     get '/users' do
-        redirect_if_not_logged_in
+        authenticate
         @users = User.all
         erb :'users/index'
     end
