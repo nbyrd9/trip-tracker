@@ -7,44 +7,43 @@ class TripsController < ApplicationController
     end
 
     get '/trips/new' do 
-        if logged_in?
-            @user = current_user
-            erb :'/trips/new'
-        else
-            redirect '/home'
-        end
+        authenticate
+        erb :'trips/new'
     end
 
     post '/trips' do
         authenticate
+        # @city = params[:city]
+        # @country = params[:country]
         trip = Trip.create(params[:trip])
+        
+    
         user = User.find_by(id: session[:user_id])
         user.trips << trip
+        redirect "/trips/#{trip.id}"
     end
 
     get '/trips/:id' do
-        @trip = Trip.find(params[:id])
-        if logged_in? && @trip.user_id == current_user.id
-            erb :'/trips/show'
-        else
-            redirect '/'
+        authenticate
+        set_trip
+         if !@trips
+        redirect '/trips'
         end
+        erb :'trips/show'
     end
 
     get '/trips/:id/edit' do
-        @trip = Trip.find(params[:id])
-        if logged_in? && @trip.user_id == current_user.id
-            erb :'/trips/edit'
-        else
-            redirect '/'
-        end
-    end
+        redirect_if_not_logged_in
+        set_trip
+        redirect_if_not_owner(@trips)
+        erb :'trips/edit'
+      end
 
     patch '/trips/:id' do
         authenticate
      set_trip
-     if check_owner(@trip)
-        @trip.update(params[:trip])
+     if check_owner(@trips)
+        @trips.update(params[:trips])
      end
      erb :'trips/show'
     end
@@ -52,8 +51,8 @@ class TripsController < ApplicationController
     delete '/trips/:id' do
         authenticate
         set_trip
-        if check_owner(@trip)
-           @trip.delete
+        if check_owner(@trips)
+           @trips.delete
            redirect '/trips'
         else
             erb :'trips/show'

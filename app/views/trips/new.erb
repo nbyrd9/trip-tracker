@@ -5,16 +5,14 @@
 <%end%>
 
 
-<form action="/trips/<%=@trip.id %>" method="post">
-  <label>Trip Name: </label>
-  <input type="text" name="trip[name]" value="<%=@trip.name%>">
+<form action="/trips" method="post">
   <label>City: </label>
-  <input type="text" name="trip[city]"  value="<%=@trip.city%>">
+  <input type="text" name="trip[city]" >
   <label>Country: </label>
-  <input type="text" name="trip[country]"  value="<%=@trip.country%>">
+  <input type="text" name="trip[country]" >
   <label>Dates: </label>
-  <input type="text" name="trip[date]"  value="<%=@trip.date%>">
+  <input type="date" name="trip[travel_dates]" >
   <label>Traveled?: </label>
-  <input type="text" name="trip[city]"  value="<%=@trip.city%>">
+  <input type="text" name="trip[traveled?]"  >
   <input type="submit">
 </form>

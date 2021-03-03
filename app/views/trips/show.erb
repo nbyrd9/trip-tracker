@@ -1,0 +1,13 @@
+<h1>Your Trip</h1>
+
+<p><%= @trips.city %> - <%= @trips.country %></p>
+<p><%= @trips.travel_dates %> - <%= @trips.traveled? %></p>
+
+<% if check_owner(@trips) %>
+  <form action="/trips<%=@trips.id%>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete">
+  </form>
+
+  <a href="/trips<%=@trips.id%>/edit">Edit this Trip</a>
+<%end %>

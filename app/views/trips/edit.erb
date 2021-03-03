@@ -3,8 +3,6 @@
 
 <form action="/trips/<%=@trip.id %>" method="post">
   <input type="hidden" name="_method" value="patch">
-  <label>Trip Name: </label>
-  <input type="text" name="trip[name]" value="<%=@trip.name%>">
   <label>City: </label>
   <input type="text" name="trip[city]"  value="<%=@trip.city%>">
   <label>Country: </label>

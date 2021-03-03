@@ -3,8 +3,8 @@
 <%=flash[:message]%>
 
 <ul>
-  <% @trip.each do |trip| %>
-    <li><a href="/trips/<%=trip.id%>"><%=trip.name%></a></li>
+  <% @trips.each do |trip| %>
+    <li><a href="/trips/<%=trip.id%>"></a></li>
   <%end%>
 
 </ul>

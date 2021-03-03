@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
 
     get '/signup' do
-        if logged_in?
-            @user = current_user
-            redirect "/users/#{session[:user_id]}"
+        if session[:user_id]
+        redirect "/users/#{session[:user_id]}"
         else
             erb :'users/signup'
         end
@@ -11,12 +10,13 @@ class UsersController < ApplicationController
 
 
     post '/signup' do
-        user = User.create(params[:user])
+        user = User.create(params)
+        
         if user.id 
             session[:user_id] = user.id
-            redirect '/users/#{user.id}'
+            redirect "/users/#{user.id}"
         else
-            erb :'users/create_user'
+            erb :'users/signup'
         end
     end
 
@@ -28,11 +28,10 @@ class UsersController < ApplicationController
     end
 
     get '/login' do 
-        if !logged_in?
-            erb :'users/login' 
-        else
+        if session[:user_id]
             redirect "/users/#{session[:user_id]}"
         end
+          erb :'users/login'
     end
 
     post '/login' do
@@ -43,14 +42,14 @@ class UsersController < ApplicationController
             flash[:message] = "You have successfully logged in!"
             redirect "/users/#{user.id}"
         else
-            @errors = ["Invalid login. Please try again."]
-            redirect "users/login"
+            #use flash = ["Invalid login. Please try again."]
+            erb :'users/login'
         end
     end
 
     get '/logout' do 
         session.destroy
-        erb :'/login'
+        redirect '/login'
     end
 
     get '/users' do
