@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     end
 
     get '/logout' do 
-        session.destroy
+        session.clear
         redirect '/login'
     end
 

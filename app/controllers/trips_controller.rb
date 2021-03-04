@@ -8,16 +8,12 @@ class TripsController < ApplicationController
     end
 
     get '/trips/new' do
-        
         authenticate
-        
         erb :'trips/new'
     end
 
     post '/trips' do
         authenticate
-        # @city = params[:city]
-        # @country = params[:country]
         trip = Trip.create(params[:trip])
         
     
@@ -46,7 +42,7 @@ class TripsController < ApplicationController
         authenticate
         set_trip
         if check_owner(@trips)
-            @trips.update(params[:trips])
+            @trips.update(params[:trip])
         end
         erb :'trips/show'
     end
