@@ -24,7 +24,7 @@ class UsersController < ApplicationController
         authenticate
             @user = User.find_by(id: params[:id])
             
-            @trips = @user.trip
+            @trips = @user.trips
             erb :'users/show'
     end
 
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
         if user && user.authenticate(params[:user][:password])
             session[:user_id] = user.id
-            flash[:message] = "You have successfully logged in!"
+            flash[:message] = ["You have successfully logged in!"]
             redirect "/users/#{user.id}"
         else
             #use flash = ["Invalid login. Please try again."]
