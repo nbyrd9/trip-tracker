@@ -1,15 +1,15 @@
 <h1>Edit Trip</h1>
 
 
-<form action="/trips/<%=@trip.id %>" method="post">
+<form action="/trips/<%=@trips.id %>" method="post">
   <input type="hidden" name="_method" value="patch">
   <label>City: </label>
-  <input type="text" name="trip[city]"  value="<%=@trip.city%>">
+  <input type="text" name="trip[city]"  value="<%=@trips.city%>">
   <label>Country: </label>
-  <input type="text" name="trip[country]"  value="<%=@trip.country%>">
+  <input type="text" name="trip[country]"  value="<%=@trips.country%>">
   <label>Dates: </label>
-  <input type="text" name="trip[date]"  value="<%=@trip.date%>">
+  <input type="text" name="trip[date]"  value="<%=@trips.date%>">
   <label>Traveled?: </label>
-  <input type="text" name="trip[city]"  value="<%=@trip.city%>">
+  <input type="text" name="trip[city]"  value="<%=@trips.city%>">
   <input type="submit">
 </form>

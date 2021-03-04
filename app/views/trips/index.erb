@@ -1,9 +1,9 @@
-<h1>Trips</h1>
-<%=flash[:message]%>
+<h1>All Trips</h1>
+
 
 <ul>
   <% @trips.each do |trip| %>
-    <li><a href="/trips/<%=trip.id%>"></a></li>
+    <li><%=item.country%></li>
   <%end%>
 
 </ul>

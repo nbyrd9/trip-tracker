@@ -23,7 +23,8 @@ class UsersController < ApplicationController
     get '/users/:id' do
         authenticate
             @user = User.find_by(id: params[:id])
-            @trips = @user.trips
+            
+            @trips = @user.trip
             erb :'users/show'
     end
 
@@ -35,6 +36,7 @@ class UsersController < ApplicationController
     end
 
     post '/login' do
+
         user = User.find_by(username: params[:user][:username])
 
         if user && user.authenticate(params[:user][:password])

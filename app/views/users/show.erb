@@ -1,10 +1,4 @@
-<h1><%=@user.username%>'s Trips</h1>
+  
+<h1>Welcome to <%= @user.username %>'s Page </h1>
 
-<%=flash[:message]%>
-
-<ul>
-  <% @trips.each do |trip| %>
-    <li><a href="/trips/<%=trip.id%>"></a></li>
-  <%end%>
-
-</ul>
+<a href="/logout">Log Out</a>

@@ -2,12 +2,15 @@ class TripsController < ApplicationController
 
     get '/trips' do
         authenticate
+  
         @trips = Trip.all
         erb :'trips/index'
     end
 
-    get '/trips/new' do 
+    get '/trips/new' do
+        
         authenticate
+        
         erb :'trips/new'
     end
 
@@ -41,11 +44,11 @@ class TripsController < ApplicationController
 
     patch '/trips/:id' do
         authenticate
-     set_trip
-     if check_owner(@trips)
-        @trips.update(params[:trips])
-     end
-     erb :'trips/show'
+        set_trip
+        if check_owner(@trips)
+            @trips.update(params[:trips])
+        end
+        erb :'trips/show'
     end
 
     delete '/trips/:id' do
@@ -53,7 +56,7 @@ class TripsController < ApplicationController
         set_trip
         if check_owner(@trips)
            @trips.delete
-           redirect '/trips'
+           redirect "/trips"
         else
             erb :'trips/show'
         end    
