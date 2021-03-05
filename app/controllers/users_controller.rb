@@ -52,13 +52,13 @@ class UsersController < ApplicationController
             redirect "/users/#{user.id}"
         else
             flash[:message] = ["Invalid login. Please try again."]
-            erb :'users/login'
+            redirect "/login"
         end
     end
 
     get '/logout' do 
         session.clear
-        redirect '/login'
+        redirect "/login"
     end
 
     get '/users' do

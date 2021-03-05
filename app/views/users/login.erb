@@ -1,5 +1,10 @@
 <h1>Log In to Your Trip Tracker!</h1>
 
+<%flash[:message] && flash[:message].each do |m| %>
+  <p><%=m%></p>
+<%end%>
+
+
 <form action="/login" method="post">
 <p>Username: <input type="text" name="user[username]"></p>
 <p>Password: <input type="password" name="user[password]"></p>
