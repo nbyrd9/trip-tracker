@@ -11,3 +11,8 @@
   <input type="date" name="trip[date]"  value="<%=@trip.travel_dates%>">
   <input type="submit">
 </form>
+
+<form action="/trips/<%=@trip.id%>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete">
+</form>
