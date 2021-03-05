@@ -41,8 +41,8 @@ class TripsController < ApplicationController
     patch '/trips/:id' do
         authenticate
         set_trip
-        if check_owner(@trips)
-            @trips.update(params[:trip])
+        if check_owner(@trip)
+            @trip.update(params[:trip])
         end
         erb :'trips/show'
     end
@@ -50,8 +50,8 @@ class TripsController < ApplicationController
     delete '/trips/:id/delete' do
         authenticate
         set_trip
-        if check_owner(@trips)
-           @trips.delete
+        if check_owner(@trip)
+           @trip.delete
            redirect "/trips"
         else
             erb :'trips/show'
