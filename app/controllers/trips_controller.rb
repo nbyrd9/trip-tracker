@@ -47,7 +47,7 @@ class TripsController < ApplicationController
         erb :'trips/show'
     end
 
-    delete '/trips/:id/' do
+    delete '/trips/:id/delete' do
         authenticate
         set_trip
         if check_owner(@trips)
