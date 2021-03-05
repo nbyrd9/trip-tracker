@@ -1,13 +1,13 @@
 <h1>Edit Trip</h1>
 
 
-<form action="/trips/<%=@trips.id %>" method="post">
+<form action="/trips/<%=@trip.id %>" method="post">
   <input type="hidden" name="_method" value="patch">
   <label>City: </label>
-  <input type="text" name="trip[city]"  value="<%=@trips.city%>">
+  <input type="text" name="trip[city]"  value="<%=@trip.city%>">
   <label>Country: </label>
-  <input type="text" name="trip[country]"  value="<%=@trips.country%>">
+  <input type="text" name="trip[country]"  value="<%=@trip.country%>">
   <label>Dates: </label>
-  <input type="text" name="trip[date]"  value="<%=@trips.date%>">
+  <input type="date" name="trip[date]"  value="<%=@trip.travel_dates%>">
   <input type="submit">
 </form>

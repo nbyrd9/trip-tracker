@@ -63,8 +63,8 @@ class UsersController < ApplicationController
 
     get '/users' do
         authenticate
-        @users = User.find(session[:user_id])
-        # @users = User.all
+        # @users = User.find(session[:user_id])
+        @users = User.all
         erb :'users/index'
     end
 end

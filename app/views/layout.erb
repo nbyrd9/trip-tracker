@@ -13,7 +13,7 @@
             <a class="nav-link" href="/signup">Sign Up</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/users/login">Log In</a>
+            <a class="nav-link" href="/login">Log In</a>
           </li>
   </ul>
 
@@ -24,13 +24,15 @@
   </head>
   <body>
 
+
+<%if current_user%>
 <ul class="nav justify-content-center">
   <li class="nav-item">
   <a href="/" class="btn btn-primary btn-sm">Home</a>
   <a href="/trips/new" class="btn btn-primary btn-sm">New Trip</a>
   <a href="/trips/index" class="btn btn-primary btn-sm">All Trips</a>
-  <a href="/users/:id" class="btn btn-primary btn-sm">Profile</a>
-  <a href="/users/" class="btn btn-primary btn-sm">Users</a>
+  <a href="/users/<%=current_user.id%>" class="btn btn-primary btn-sm">Profile</a>
+  <a href="/users" class="btn btn-primary btn-sm">Users</a>
 
 
 
@@ -40,7 +42,7 @@
   </li>
   
 </ul>
-
+<%end%>
 
   <%=yield%>
   </body>

@@ -11,7 +11,7 @@ class ApplicationController < Sinatra::Base
 
 
     get '/' do
-        erb :home
+        erb :'home'
     end
 
     helpers do 
@@ -39,7 +39,7 @@ class ApplicationController < Sinatra::Base
         end
 
         def set_trip
-            @trips = Trip.find_by(id: params[:id])
+            @trip = Trip.find_by(id: params[:id])
         end
       
     end

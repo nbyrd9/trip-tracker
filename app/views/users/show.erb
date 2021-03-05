@@ -1,11 +1,14 @@
   
 <h1>Welcome to <%= @user.username %>'s Page </h1>
-<h2>Here are your trips</h2>
+<h3>Here are your trips</h3>
 
 
 <% @user.trips.each do |trip| %>
   <div>
     <%= trip.city %>,<%= trip.country %>
+  
+  <a href="/trips/<%=trip.id%>/edit">Edit Trip </a>
+  
   </div>
 <% end %>
 

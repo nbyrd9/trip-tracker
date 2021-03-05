@@ -32,9 +32,9 @@ class TripsController < ApplicationController
     get '/trips/:id/edit' do
 
         authenticate
-        @users = User.find_by(id :params[:id])
+        # @trip = Trip.find_by(id :params[:id])
         set_trip
-        redirect_if_not_owner(@trips)
+        redirect_if_not_owner(@trip)
         erb :'trips/edit'
     end
 
@@ -47,7 +47,7 @@ class TripsController < ApplicationController
         erb :'trips/show'
     end
 
-    delete '/trips/:id' do
+    delete '/trips/:id/' do
         authenticate
         set_trip
         if check_owner(@trips)
