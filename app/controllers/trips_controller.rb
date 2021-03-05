@@ -55,7 +55,9 @@ class TripsController < ApplicationController
            redirect "/trips"
         else
             erb :'trips/show'
-        end    
+        end   
+        @trip = Trip.all
+        erb :'trips/index' 
     end
 end
 

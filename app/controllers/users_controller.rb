@@ -8,6 +8,13 @@ class UsersController < ApplicationController
         end
     end
 
+    get '/signup' do
+        if !logged_in?
+          erb :'users/create_user'
+        else
+          redirect to 'users/show'
+        end
+    end
 
     post '/signup' do
         user = User.create(params)
@@ -30,8 +37,9 @@ class UsersController < ApplicationController
     get '/login' do 
         if session[:user_id]
             redirect "/users/#{session[:user_id]}"
-        end
+        else
           erb :'users/login'
+        end
     end
 
     post '/login' do
@@ -55,7 +63,8 @@ class UsersController < ApplicationController
 
     get '/users' do
         authenticate
-        @users = User.all
+        @users = User.find(session[:user_id])
+        # @users = User.all
         erb :'users/index'
     end
 end

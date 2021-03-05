@@ -1,4 +1,13 @@
   
 <h1>Welcome to <%= @user.username %>'s Page </h1>
+<h2>Here are your trips</h2>
+
+
+<% @user.trips.each do |trip| %>
+  <div>
+    <%= trip.city %>,<%= trip.country %>
+  </div>
+<% end %>
+
 
 <a href="/logout">Log Out</a>
