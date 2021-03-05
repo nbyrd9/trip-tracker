@@ -1,10 +1,12 @@
-<h1>Your Trip</h1>
+<h1>Trip Details</h1>
 
 <p><%= @trips.city %> - <%= @trips.country %></p>
-<p><%= @trips.travel_dates %> - <%= @trips.traveled? %></p>
+<p><%= @trips.travel_dates %></p>
 
-<form action="/trips/<%=@item.id%>" method="post">
+<form action="/trips/<%=@trips.id%>" method="post">
   <input type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete">
 </form>
+
+
 

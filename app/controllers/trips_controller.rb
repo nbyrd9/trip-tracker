@@ -2,7 +2,6 @@ class TripsController < ApplicationController
 
     get '/trips' do
         authenticate
-  
         @trips = Trip.all
         erb :'trips/index'
     end
@@ -12,11 +11,10 @@ class TripsController < ApplicationController
         erb :'trips/new'
     end
 
-    post '/trips' do
+    post '/trips/' do
         authenticate
         trip = Trip.create(params[:trip])
-        
-    
+       
         user = User.find_by(id: session[:user_id])
         user.trips << trip
         redirect "/trips/#{trip.id}"
@@ -32,11 +30,13 @@ class TripsController < ApplicationController
     end
 
     get '/trips/:id/edit' do
-        redirect_if_not_logged_in
+
+        authenticate
+        @users = User.find_by(id :params[:id])
         set_trip
         redirect_if_not_owner(@trips)
         erb :'trips/edit'
-      end
+    end
 
     patch '/trips/:id' do
         authenticate

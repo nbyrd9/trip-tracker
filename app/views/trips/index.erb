@@ -2,8 +2,15 @@
 
 
 <ul>
+
   <% @trips.each do |trip| %>
-    <li><%=item.country%></li>
+  <li> <a href="/trips/<%=trip.id%>"> <%=trip.city%>, <%=trip.country%>, <%=trip.travel_dates%> </a>
+    </li>
+   
+
+
+
   <%end%>
+
 
 </ul>
