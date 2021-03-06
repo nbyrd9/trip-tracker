@@ -1,9 +1,9 @@
 <h1>Trip Details</h1>
 
-<p><%= @trips.city %> - <%= @trips.country %></p>
-<p><%= @trips.travel_dates %></p>
+<p><%= @trip.city %> - <%= @trip.country %></p>
+<p><%= @trip.travel_dates %></p>
 
-<form action="/trips/<%=@trips.id%>" method="post">
+<form action="/trips/<%=@trip.id%>" method="post">
   <input type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete">
 </form>

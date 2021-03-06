@@ -23,7 +23,7 @@ class TripsController < ApplicationController
     get '/trips/:id' do
         authenticate
         set_trip
-         if !@trips
+         if !@trip
         redirect '/trips'
         end
         erb :'trips/show'
