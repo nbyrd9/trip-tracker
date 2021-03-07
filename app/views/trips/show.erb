@@ -3,6 +3,7 @@
 <p><%= @trip.city %> - <%= @trip.country %></p>
 <p><%= @trip.travel_dates %></p>
 
+<% if check_owner(@trip) %>
 <form action="/trips/<%=@trip.id%>" method="post">
   <input type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete">
@@ -10,3 +11,5 @@
 
 
 
+<a href="/trips/<%=@trip.id%>/edit">Edit this Trip</a>
+<% end %>

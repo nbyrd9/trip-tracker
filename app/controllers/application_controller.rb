@@ -33,7 +33,6 @@ class ApplicationController < Sinatra::Base
       
         def redirect_if_not_owner(obj)
             if !check_owner(obj)
-              flash[:message] = "Please Try Again"
               redirect '/trips'
             end
         end
