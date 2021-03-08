@@ -1,5 +1,5 @@
 # Description
-Welcome to Trip Tracker!! This project was intended to allow users to document all of their favorite trips.
+Welcome to Trip Tracker!! This project was intended to allow users to document all of their favorite trips. You can track previous trips and even trips you plan to take the future. 
 
 
 # Install Instructions
