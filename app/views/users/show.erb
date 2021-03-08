@@ -7,16 +7,15 @@
 <% @user.trips.each do |trip| %>
   <div>
   
-    <%= trip.city %>, <%= trip.country %>
-  
-  <a href="/trips/<%=trip.id%>/edit">Edit Trip </a>
+  <li> <a href="/trips/<%=trip.id%>"> <%= trip.city %>, <%= trip.country %> </a> </li>
+ 
 
 
   </div>
 <% end %>
+<br>
+<a class="btn btn-secondary" href="/logout" role="button">Log Out</a>
 
-
-<a href="/logout">Log Out</a>
 
 <p style="text-align:center;"> <img src="https://wttc.org/DesktopModules/MVC/NewsArticleList/images/141_20201013185512_Consumer%20Survey%20Finds%2070%20Percent%20of%20Travelers%20Plan%20to%20Holiday%20in%202021.jpg" class="center" alt="Globe"></p> 
 </span>
