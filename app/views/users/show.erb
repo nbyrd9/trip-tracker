@@ -1,4 +1,10 @@
 <span class="border border-primary">
+
+<%flash[:message] && flash[:message].each do |m| %>
+  <p><%=m%></p>
+<%end%>
+
+
 <h1>Welcome to <%= @user.username %>'s Page </h1>
 <br>
 <h3>Here are your trips</h3>
@@ -6,11 +12,7 @@
 
 <% @user.trips.each do |trip| %>
   <div>
-  
   <li> <a href="/trips/<%=trip.id%>"> <%= trip.city %>, <%= trip.country %> </a> </li>
- 
-
-
   </div>
 <% end %>
 <br>
