@@ -30,7 +30,6 @@ class TripsController < ApplicationController
     end
 
     get '/trips/:id/edit' do
-
         authenticate
         set_trip
         redirect_if_not_owner(@trip)

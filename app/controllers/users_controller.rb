@@ -8,13 +8,7 @@ class UsersController < ApplicationController
         end
     end
 
-    get '/signup' do
-        if !logged_in?
-          erb :'users/create_user'
-        else
-          redirect to 'users/show'
-        end
-    end
+
 
     post '/signup' do
         user = User.create(params)
